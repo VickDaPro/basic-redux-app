@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { configureStore } from "redux";
+import { createStore } from "redux";
 import allReducers from "./reducers";
+import { Provider } from "react-redux";
 
-let store = configureStore(allReducers);
+let store = createStore(allReducers);
 
 // // STORE - Globalised state
 
@@ -43,4 +44,8 @@ let store = configureStore(allReducers);
 // store.dispatch(increment());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
